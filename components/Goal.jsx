@@ -1,8 +1,34 @@
-import { VStack, Text, Progress, ProgressFilledTrack } from "@gluestack-ui/themed"
+import { useEffect } from "react"
+import {
+    VStack, Text, Progress, ProgressFilledTrack, useToast,
+    Toast, ToastTitle, ToastDescription
+}
+    from "@gluestack-ui/themed"
 
 const GOAL = 3000
 
 export default function Goal({ volume }) {
+    const toast = useToast()
+
+    useEffect(() => {
+        if (volume > 0) {
+            toast.show({
+                placement: "top",
+                render: ({ id }) => {
+                    return (
+                        <Toast nativeID={'toast-' + id} action='succes' variant='solid'>
+                            <VStack space="sm">
+                                <ToastTitle>Well done!</ToastTitle>
+                                <ToastDescription>Keep on drinking</ToastDescription>
+                            </VStack>
+                        </Toast>
+                    )
+                }
+            })
+        }
+    }, [volume])
+
+
     return (
         <VStack
             justifyContent="space-around"
