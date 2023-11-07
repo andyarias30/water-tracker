@@ -5,8 +5,10 @@ export default function Controls({ setVolume, volume }) {
         <Box
             flexDirection="row"
             mt="$8"
-            borderColor="red"
-            borderWidth={2}>
+            justifyContent="center"
+            flexWrap="wrap"
+            
+            >
 
             <Button m="$4" size="xl" rounded="$xl"
                 onPress={() => setVolume(volume + 250)}>
@@ -16,6 +18,11 @@ export default function Controls({ setVolume, volume }) {
             <Button m="$4" size="xl" rounded="$xl"
                 onPress={() => setVolume(volume + 750)}>
                 <ButtonText>Add🫙</ButtonText>
+            </Button>
+
+            <Button m="$4" size="xl" rounded="$xl" action="negative"
+            onPress={() => setVolume(0)}>
+                <ButtonText>Reset 🙅</ButtonText>
             </Button>
 
         </Box>
